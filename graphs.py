@@ -9,7 +9,7 @@ plt.plot(x, y, 'ro')
 plt.axis([0, 6, -20, 26])
 
 def f(t):
-    return 40 * np.exp(-t) 
+    return 40* np.exp(-3*t)
 plt.plot(x, f(x), 'b')
 
 plt.show()
