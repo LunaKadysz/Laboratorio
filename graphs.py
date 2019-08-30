@@ -14,14 +14,14 @@ plt.plot(x, f(x), 'b')
 
 plt.show()
 
-sigma = 0.8 
+sigma = 2 
 ruido=[]
 ruidoo=[]
 # creating a noise with the same dimension as the dataset (2,2) 
 for i in np.nditer(f(x)):
     mu = i
     ruido1 = np.random.normal(mu, sigma,1) 
-    ruido2 = np.random.normal(0,2,1)
+    ruido2 = np.random.normal(0,4,1)
     ruido.append(ruido1)
     ruidoo.append(ruido2)
 #np.savetxt('doble_exp.dat', (x,y),delimiter="\n", newline='\r\n')

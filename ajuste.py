@@ -16,7 +16,7 @@ B0 = -3
 
 init_guess = [A0, B0]
 
-popt, pcov = curve_fit(f, x, y, p0=init_guess)    
+popt, pcov = curve_fit(f, x, yerrado, p0=init_guess)    
 
 # guardamos los resultados que nos interesan del ajuste, los parámetros A y k
 
@@ -27,6 +27,7 @@ B_fit = popt[1]
 
 ajuste = f(x, A_fit, B_fit)
 plt.plot(x, ajuste, 'b', linewidth=2.0)
+plt.plot(x,y)
 # Detalles del gráfico
 plt.grid(True) # Para que quede en hoja cuadriculada
 plt.title('Grafico ejemplo')

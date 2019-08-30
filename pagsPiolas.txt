@@ -1,0 +1,25 @@
+Paginas piolas
+
+https://github.com/fifabsas/talleresfifabsas/tree/master/python/4_Aplicaciones_avanzadas/big_data
+
+https://chrisalbon.com/#leadership
+
+https://docs.google.com/document/d/14uGyjgq1VNCXkDjSs7Z-URDTJ_o3LB4U8ZwXI-IyOp4/edit
+
+https://docs.sympy.org/latest/modules/core.html
+
+https://github.com/sympy/sympy/wiki/Tutorial
+
+https://matplotlib.org/users/pyplot_tutorial.html
+
+Asunto: Labo3
+ 
+http://amperimetro.icu/diferencia-amperimetro-voltimetro/
+
+
+Circuit Simulator
+
+https://pypi.org/project/PySpice/0.3.0/
+https://pyspice.fabrice-salvaire.fr/examples/basic-usages/subcircuit.html
+
+https://www.geeksforgeeks.org/introduction-machine-learning/
