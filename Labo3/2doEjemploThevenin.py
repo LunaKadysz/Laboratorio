@@ -31,7 +31,7 @@ err_Vc = np.sqrt(A + B)
 def lineal (x, m, b):
     return m*x+b
 
-param, param_cov = curve_fit(lineal, Ic, Vc) 
+param, param_cov = curve_fit(lineal, Ic, Vc, sigma=err_Vc) 
   
 print("Resistencia Thévenin:") 
 print(-param[0]) 
