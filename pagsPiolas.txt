@@ -23,3 +23,5 @@ https://pypi.org/project/PySpice/0.3.0/
 https://pyspice.fabrice-salvaire.fr/examples/basic-usages/subcircuit.html
 
 https://www.geeksforgeeks.org/introduction-machine-learning/
+
+https://marceluda.github.io/python-para-fisicos/
