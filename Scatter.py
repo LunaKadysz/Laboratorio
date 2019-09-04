@@ -23,7 +23,7 @@ color=[]
 # creating a noise with the same dimension as the dataset (2,2) 
 for i in np.nditer(f(x)):
     size.append(np.random.normal(0,10,1)**2)
-    ruido.append(np.random.normal(0, 5,1)**2)
+    ruido.append(np.random.normal(0, 3,1)**2)
     color.append(random.choice(list))
  
 plt.scatter(x, ruido, s=size,alpha = 0.8, c = color)
