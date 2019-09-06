@@ -4,31 +4,21 @@ Created on Wed Sep  4 08:51:54 2019
 
 @author: Luna Kadysz
 """
-import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.mlab as mlab
+import matplotlib.pyplot as plt
 from matplotlib import colors
 from matplotlib.ticker import PercentFormatter
+# example data
+mu = 100 # mean of distribution
+sigma = 15 # standard deviation of distribution
+x = mu + sigma * np.random.randn(10000)
 
-# Fixing random state for reproducibility
-np.random.seed(19680801)
-N_points = 100000
-n_bins = 20
-
-# Generate a normal distribution, center at x=0 and y=5
-x = np.random.randn(N_points)
-y = .4 * x + np.random.randn(100000) + 5
-
-fig, axs = plt.subplots(1, 2, sharey=True, tight_layout=True)
-
-# We can set the number of bins with the `bins` kwarg
-axs[0].hist(x, bins=n_bins)
-axs[1].hist(y, bins=n_bins)
-
-fig, axs = plt.subplots(1, 2, tight_layout=True)
+num_bins = 20
 
 # N is the count in each bin, bins is the lower-limit of the bin
-N, bins, patches = axs[0].hist(x, bins=n_bins)
-
+N, bins, patches = plt.hist(x, bins=num_bins)
+y = mlab.normpdf(bins, mu, sigma)
 # We'll color code by height, but you could use any scalar
 fracs = N / N.max()
 
@@ -40,8 +30,10 @@ for thisfrac, thispatch in zip(fracs, patches):
     color = plt.cm.viridis(norm(thisfrac))
     thispatch.set_facecolor(color)
 
+
 # We can also normalize our inputs by the total number of counts
-axs[1].hist(x, bins=n_bins, density=True)
+plt.hist(x, bins=num_bins, density=True, color = np.array(thispatch))
 
 # Now we format the y-axis to display percentage
-axs[1].yaxis.set_major_formatter(PercentFormatter(xmax=1))
+plt.yaxis.set_major_formatter(PercentFormatter(xmax=1))
+plt.show()
