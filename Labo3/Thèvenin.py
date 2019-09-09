@@ -53,7 +53,7 @@ print(param_cov)
 ans2 = (param[0]* IC + param[1]) 
 
 plt.plot(IC, ans2, '--', color ='blue', label ="Ajuste Lineal") 
-plt.errorbar(IC, VC, yerr=err_VC, fmt='.',color ='red')
+plt.errorbar(IC, VC, yerr=err_VC, fmt='.',color ='red', label ="Ajuste Lineal")
 plt.legend() 
 plt.show() 
     

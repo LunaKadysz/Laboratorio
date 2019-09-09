@@ -43,8 +43,12 @@ print(param_cov)
 ans2 = (param[0]* Ic + param[1]) 
 
 plt.plot(Ic, ans2, '--', color ='blue', label ="Ajuste Lineal") 
-plt.errorbar(Ic, Vc, yerr=err_Vc, fmt='.',color ='red')
+plt.errorbar(Ic, Vc, yerr=err_Vc, fmt='o',color ='red',label ="Datos")
 plt.legend() 
+plt.title('Thevenin')
+plt.xlabel('Corriente [mA]')
+plt.ylabel('Voltaje [mV]')
+
 plt.show() 
     
 

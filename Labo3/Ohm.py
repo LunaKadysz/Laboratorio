@@ -40,6 +40,10 @@ print(param_cov)
 ans1 = (param[0]* I + param[1]) 
   
 plt.plot(I, voltimetro, 'o', color ='red', label ="Datos") 
-plt.plot(I, ans, '--', color ='blue', label ="Ajuste Lineal") 
+plt.plot(I, ans1, '--', color ='blue', label ="Ajuste Lineal") 
+plt.title('Ohm')
+plt.xlabel('Corriente [mA]')
+plt.ylabel('Voltaje [V]')
+
 plt.legend() 
 plt.show() 
