@@ -25,9 +25,9 @@ r = np.array([0,1,2,3])
 names = ['1','2','3','4']
 barWidth = 1
  
-plt.bar(r, I1, color='green', edgecolor='white', width=barWidth)
-plt.bar(r, I2, bottom=I1, color='orange', edgecolor='white', width=barWidth)
- 
+plt.bar(r, I1, color='green', edgecolor='white', width=barWidth, label ="I1")
+plt.bar(r, I2, bottom=I1, color='orange', edgecolor='white', width=barWidth, label ="I2")
+
 plt.xticks(r, names, fontweight='bold')
 plt.xlabel("Disposición N°")
 plt.ylabel("Suma de las Corrientes [mA]")
