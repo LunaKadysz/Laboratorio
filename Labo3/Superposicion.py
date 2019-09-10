@@ -39,6 +39,7 @@ plt.bar(r2, I12, color='purple', width=barWidth, edgecolor='white', label ='I')
 plt.xticks(r1, names, fontweight='bold')
 plt.xlabel("Disposición N°")
 plt.ylabel("Suma de las Corrientes [mA]")
-
+plt.ylim(0,4)
+plt.title("superposicion")
 plt.legend(loc='best') 
 plt.show()
