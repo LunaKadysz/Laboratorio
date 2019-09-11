@@ -46,7 +46,7 @@ plt.ylabel('Potencia [P]')
 xmax = param[1]
 ymax = f(xmax, *param)
 
-plt.annotate(round(xmax, 2), xy=(xmax, ymax), xytext=(xmax, -460), ha='center')
+plt.annotate(round(xmax, 2), xy=(xmax, ymax), xytext=(xmax, -460), ha='center', color='red')
 plt.vlines(xmax, 0, ymax, linestyles= '--', color ='red')
 plt.ylim(0,ymax*1.1)
 plt.legend()

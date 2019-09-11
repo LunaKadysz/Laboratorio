@@ -7,8 +7,7 @@ Created on Tue Sep  3 19:04:05 2019
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import rc
-import pandas as pd
-from scipy.optimize import curve_fit 
+
 # [V] = v , [R] = Ohm
 
 R1 = 3000
