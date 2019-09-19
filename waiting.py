@@ -12,23 +12,28 @@ import matplotlib.pyplot as plt
 from matplotlib import rc
 
 
-waiting_viejo = np.array([25.43,32.27,17.02,48.97,29.12])
-waiting_nuevo = np.array([])
-
+waiting_viejo = [25.43,32.27,17.02,48.97,29.12]
+threading = [18.91,15.23,14.29,14.53,14.99]
+ry = waiting_viejo + threading
 
 rc('font', weight='bold')
 barWidth = 0.33
-r1 = np.linspace(0,len(waiting_viejo)-1,len(waiting_viejo))
-r2 = [x + barWidth for x in r1]
+r1 = [0,1,2,3,4]
+r2 = ([x + barWidth for x in r1])
+r = r1 + r2
 names = ['155','154','90','76','26']
 
  
-plt.bar(r1, waiting_viejo, color='green', edgecolor='white', width=barWidth, label ='Promedio viejo: ' + str(round(np.average(waiting_viejo), 2)) + 'ms')
-#plt.bar(r2, I12, color='purple', width=barWidth, edgecolor='white', label ='I')
+plt.bar(r1, waiting_viejo, color='green', edgecolor='white', width=barWidth, label ='Promedio viejo: ' + str(round(np.average(waiting_viejo), 2)) + 's')
+plt.bar(r2, threading, color='orange', width=barWidth, edgecolor='white', label ='Promedio multithreading: '+ str(round(np.average(threading), 2)) + 's')
+
+for i in range(len(r)):
+    plt.text(x = r[i]-0.1 , y = ry[i]+0.1, s = ry[i], size = 6)
+
 
 plt.xticks(r1, names, fontweight='bold')
 plt.xlabel("Nuemero de Solicitud")
-plt.ylabel("Tiempo [ms]")
+plt.ylabel("Tiempo [s]")
 plt.title("")
-plt.legend(loc='best') 
+plt.legend(loc = 'upper left') 
 plt.show()
