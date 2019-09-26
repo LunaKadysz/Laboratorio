@@ -18,10 +18,11 @@ x = np.arange(0., 4, .01)
 
 plt.xlabel("Tiempo [s]")
 plt.ylabel("Cantidad")
-plt.title("Colors vs Values")
+plt.title("Tiempo en cargar sin Dataview")
 plt.ylim(0,1.20)
-plt.plot(x,density(x), color="b",label = 'Mediana: ' + str(np.mean(tiempo)))
+plt.plot(x,density(x), color="b",label = 'Mediana: ' + str(round(np.mean(tiempo), 2)))
 plt.vlines(np.mean(tiempo), 0, density(np.mean(tiempo)), linestyles= '--', color ='red')
 plt.annotate(round(np.mean(tiempo), 2), xy=(np.mean(tiempo), density(np.mean(tiempo))), xytext=(np.mean(tiempo)+0.15, density(np.mean(tiempo))), ha='center', color='red')
+plt.legend()
 plt.show()
 

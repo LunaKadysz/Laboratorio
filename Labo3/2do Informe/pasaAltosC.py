@@ -38,9 +38,9 @@ print(param_cov)
   
 ans1 = 1/(np.sqrt(1+(frec/param[0])**(-2)))
 
-plt.errorbar(frec,V_sal/V_ent,yerr=propagacion, fmt='o',color ='black',label ="Datos", ecolor = 'red')
+plt.errorbar(frec,V_sal/V_ent,yerr=propagacion, fmt='.',color ='black',label ="Datos", ecolor = 'red')
 plt.plot(frec, ans1, '--', color ='blue', label ="Ajuste") 
-plt.title('Pasa altos Capacitor')
+plt.title('Pasa altos con Capacitor')
 plt.xlabel('Frecuencia [Hz]')
 plt.ylabel('Transferencia ')
 
