@@ -45,28 +45,34 @@ err_V_c = np.array([0.2,0.05,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.05,0.05,0.05,0.05
 
 
 
+x = np.linspace(0,3000,1000)
+
+#def f(frec,R,C):
+ #   return np.sqrt((frec*R)**2)/(np.sqrt(R**2+(frec - 1/(frec*C))**2))
+def f(frec,f0,E,A0,T0):
+    w = 2*np.pi*frec
+    w0 = 2*np.pi*f0
+    A = (w/w0)-(w0/w)
+    B = 2*E
+    C = (B/A)**2
+    return (A0/np.sqrt(1+C))+T0
 
 
-def f(frec,R,C):
-    return np.sqrt((frec*R)**2)/(np.sqrt(R**2+(frec - 1/(frec*C))**2))
-
-
-
-param_a, param_cov_a = curve_fit(f,frec_a,V_a/R[0], p0=[5000,1e-06]) 
+param_a, param_cov_a = curve_fit(f,frec_a,V_a/R[0], p0=[159,0.1,0.6,0.3]) 
   
 print("Covariance of coefficients:") 
 print(param_cov_a) 
 print(param_a[0])
 print(param_a[1])
 
-param_b, param_cov_b = curve_fit(f,frec_b,V_b/R[1], p0=[500,1e-06]) 
+param_b, param_cov_b = curve_fit(f,frec_b,V_b/R[1], p0=[159,0.1,0.6,0.3]) 
   
 print("Covariance of coefficients:") 
 print(param_cov_b) 
 print(param_b[0])
 print(param_b[1])
 
-param_c, param_cov_c = curve_fit(f,frec_c,V_c/R[2], p0=[5000,1e-06]) 
+param_c, param_cov_c = curve_fit(f,frec_c,V_c/R[2], p0=[159,0.1,0.6,0.3]) 
   
 print("Covariance of coefficients:") 
 print(param_cov_b) 
@@ -78,15 +84,16 @@ print(param_b[1])
 
 
 plt.figure()
-plt.plot(frec_a,f(frec_a,param_a[0],param_a[1]), '--', color ='blue', label ="Ajuste") 
-plt.plot(frec_b,f(frec_b,param_b[0],param_b[1]), '--', color ='green', label ="Ajuste") 
-plt.plot(frec_c,f(frec_c,param_c[0],param_c[1]), '--', color ='orange', label ="Ajuste") 
+plt.plot(x,f(x,param_a[0],param_a[1],param_a[2],param_a[3]), '--', label ="Ajuste") 
+plt.plot(x,f(x,param_b[0],param_b[1],param_b[2],param_b[3]), '--', color ='green', label ="Ajuste") 
+plt.plot(x,f(x,param_c[0],param_c[1],param_c[2],param_c[3]), '--', color ='orange', label ="Ajuste") 
 plt.title("Curvas de I(f) para distintos valores de resistencia")
-plt.scatter(frec_a,V_a/(R[0]), s= 15)
-plt.scatter(frec_b, V_b/R[1], color = 'green',s=15)
-plt.scatter(frec_c , V_c/R[2], color = 'orange',s=15)
+plt.scatter(frec_a,V_a/(R[0]), s= 15, label ="Datos")
+plt.scatter(frec_b, V_b/R[1], color = 'green',s=15, label ="Datos")
+plt.scatter(frec_c , V_c/R[2], color = 'orange',s=15, label ="Datos")
 plt.xlabel("Frecuencia [Hz]")
 plt.ylabel("Corriente [A]")
+plt.legend()
 plt.show()
 
 
