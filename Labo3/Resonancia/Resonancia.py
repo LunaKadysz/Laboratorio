@@ -75,7 +75,7 @@ print(param_b[1])
 param_c, param_cov_c = curve_fit(f,frec_c,V_c/R[2], p0=[159,0.1,0.6,0.3]) 
   
 print("Covariance of coefficients:") 
-print(param_cov_b) 
+print(param_cov_c) 
 print(param_b[0])
 print(param_b[1])
 
