@@ -8,6 +8,7 @@ Created on Tue Oct  8 18:33:08 2019
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
+from scipy import io
 import scipy
 
 
