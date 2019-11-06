@@ -1,21 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Oct  8 18:33:08 2019
+Created on Sun Nov  3 17:50:08 2019
 
-@author: Publico
+@author: Luna
 """
-
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 from scipy.signal import find_peaks
 from scipy import io
 import scipy
-
-
-# sobreamortiguado: R>2* np.sqrt(L/C) 60k de resist
-# critico R = 2 * np.sqrt(L/C)  20k resist
-# subamortiguado R<2* np.sqrt(L/C) 4k resist
 # C = 1e-08F
 # L = 1H
 # R = 4000 Ohms
@@ -26,6 +20,11 @@ x = np.linspace(0,10,1000)
 A = 1.5
 R = 4000
 L = 10000
+
+def envolvente(x,A,R,L):
+    return A * np.e**(-R*x/(2*L))
+plt.scatter(x,envolvente(x,A,R,L))
+
 
 dato = scipy.io.loadmat('RLC_sub.m')
 matriz = np.array(dato['salida'])
@@ -47,22 +46,11 @@ def V(Vc):
 def f(t,V0,tau):
     return V0 * np.e**(-t/tau)
 
-err = []
-for i in range(530):
-    a = np.random.normal(0.005, 0.01)
-    err.append(a)
 
 param, param_cov = curve_fit(f,xmax,ymax, p0=[1.52,2/4000]) 
 
 plt.figure()
-plt.plot(Tiempo(tiempo),f(Tiempo(tiempo),param[0],param[1]), '--', color ='blue', label ="Ajuste") 
-#plt.scatter(Tiempo(tiempo),V(Vc),s= 5,color = "blue",alpha=0.4, label ="Datos")
-plt.errorbar(Tiempo(tiempo),V(Vc),yerr=err, fmt='.',color ='black',label ="Datos", ecolor = 'red')
+plt.plot(Tiempo(tiempo),f(Tiempo(tiempo),param[0],param[1]), '--', color ='red', label ="Ajuste") 
+plt.scatter(Tiempo(tiempo),V(Vc),s= 5,color = "blue",alpha=0.4, label ="Datos")
 
-#plt.scatter(tiempo,Vfuente,color='orange',s= 0.5)
-#plt.ylim(0,5)
-plt.title('Transitor Subamortiguado')
-plt.xlabel('Tiempo [s]')
-plt.ylabel('Voltaje [V] ')
-plt.legend()
-plt.show()
+

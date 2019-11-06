@@ -20,18 +20,34 @@ import scipy
 # frec = 300Hz
 # Vpicopico = 5V con offset de 2.5V
 
-dato = scipy.io.loadmat('RL.m')
+
+
+dato = scipy.io.loadmat('RLC.m')
 matriz = np.array(dato['salida'])
 
 tiempo = matriz[:,0]
 Vc = matriz[:,1]
 Vfuente = matriz[:,2]
 
+def Tiempo(t):
+    return t[422:900]
+    
+def V(Vc):
+    return Vc[422:900]
+
+def f(t,V0,tau):
+    return V0 * np.e**(-t/tau)
+
+param, param_cov = curve_fit(f,Tiempo(tiempo),V(Vc), p0=[5,0.00025]) 
+
+
 plt.figure()
-plt.scatter(tiempo,Vc,s= 0.5)
-plt.scatter(tiempo,Vfuente,color='orange',s= 0.5)
-plt.xlim(-0.0018,0.005)
-plt.title('Pasa altos con Capacitor')
-plt.xlabel('Frecuencia [Hz]')
-plt.ylabel('Transferencia ')
+plt.plot(Tiempo(tiempo),f(Tiempo(tiempo),param[0],param[1]), '--', color ='red', label ="Ajuste") 
+plt.scatter(Tiempo(tiempo),V(Vc),s= 5,color = "blue",alpha=0.4, label ="Datos")
+#plt.scatter(tiempo,Vfuente,color='orange',s= 0.5)
+#plt.ylim(0,5)
+plt.title('Transitor RL')
+plt.xlabel('Tiempo [s]')
+plt.ylabel('Corriente [A] ')
+plt.legend()
 plt.show()
