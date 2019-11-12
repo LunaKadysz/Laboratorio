@@ -47,7 +47,7 @@ plt.plot(Tiempo(tiempo),f(Tiempo(tiempo),param[0],param[1]), '--', color ='red',
 plt.scatter(Tiempo(tiempo),V(Vc),s= 5,color = "blue",alpha=0.4, label ="Datos")
 #plt.scatter(tiempo,Vfuente,color='orange',s= 0.5)
 #plt.ylim(0,5)
-plt.title('Transitor RL')
+plt.title('Transitor RLC Critico')
 plt.xlabel('Tiempo [s]')
 plt.ylabel('Corriente [A] ')
 plt.legend()

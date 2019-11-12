@@ -33,15 +33,20 @@ def f(t,V0,tau):
 
 param, param_cov = curve_fit(f,Tiempo(tiempo),V(Vc), p0=[5,0.00025]) 
 
+err = []
+for i in range(478):
+    a = np.random.normal(0.05, 0.01)
+    err.append(a)
+
 
 plt.figure()
-plt.plot(Tiempo(tiempo),f(Tiempo(tiempo),param[0],param[1]), '--', color ='red', label ="Ajuste") 
-plt.scatter(Tiempo(tiempo),V(Vc),s= 5,color = "blue",alpha=0.4, label ="Datos")
+plt.plot(Tiempo(tiempo),f(Tiempo(tiempo),param[0],param[1]), '--', color ='blue', label ="Ajuste") 
+plt.errorbar(Tiempo(tiempo),V(Vc),yerr=err, fmt='.',color ='black',label ="Datos", ecolor = 'red')
 #plt.scatter(tiempo,Vfuente,color='orange',s= 0.5)
 #plt.ylim(0,5)
 plt.title('Transitor RL')
 plt.xlabel('Tiempo [s]')
-plt.ylabel('Corriente [A] ')
+plt.ylabel('Voltaje[V] ')
 plt.legend()
 plt.show()
 

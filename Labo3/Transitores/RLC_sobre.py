@@ -37,17 +37,21 @@ def V(Vc):
 def f(t,V0,tau):
     return V0 * np.e**(-t/tau)
 
-
+err = []
+for i in range(468):
+    a = np.random.normal(0.008, 0.01)
+    err.append(a)
+    
 param, param_cov = curve_fit(f,Tiempo(tiempo),V(Vc), p0=[5,0.00025]) 
 
 
 plt.figure()
-plt.plot(Tiempo(tiempo),f(Tiempo(tiempo),param[0],param[1]), '--', color ='red', label ="Ajuste") 
-plt.scatter(Tiempo(tiempo),V(Vc),s= 5,color = "blue",alpha=0.4, label ="Datos")
+plt.plot(Tiempo(tiempo)*1000,f(Tiempo(tiempo),param[0],param[1]), '--', color ='blue', label ="Ajuste") 
+plt.errorbar(Tiempo(tiempo)*1000,V(Vc),yerr=err, fmt = ':',color ='black',label ="Datos", ecolor = 'red')
 #plt.scatter(tiempo,Vfuente,color='orange',s= 0.5)
 #plt.ylim(0,5)
 plt.title('Transitor Sobreamortiguado')
-plt.xlabel('Tiempo [s]')
-plt.ylabel('Corriente [A] ')
+plt.xlabel('Tiempo [ms]')
+plt.ylabel('Voltaje [V] ')
 plt.legend()
 plt.show()
