@@ -55,14 +55,14 @@ for i in range(530):
 param, param_cov = curve_fit(f,xmax,ymax, p0=[1.52,2/4000]) 
 
 plt.figure()
-plt.plot(Tiempo(tiempo),f(Tiempo(tiempo),param[0],param[1]), '--', color ='blue', label ="Ajuste") 
+plt.plot(Tiempo(tiempo)*1000,f(Tiempo(tiempo),param[0],param[1]), '--', color ='blue', label ="Ajuste") 
 #plt.scatter(Tiempo(tiempo),V(Vc),s= 5,color = "blue",alpha=0.4, label ="Datos")
-plt.errorbar(Tiempo(tiempo),V(Vc),yerr=err, fmt='.',color ='black',label ="Datos", ecolor = 'red')
+plt.errorbar(Tiempo(tiempo)*1000,V(Vc),yerr=err, fmt='.',color ='black',label ="Datos", ecolor = 'red')
 
 #plt.scatter(tiempo,Vfuente,color='orange',s= 0.5)
 #plt.ylim(0,5)
 plt.title('Transitor Subamortiguado')
-plt.xlabel('Tiempo [s]')
+plt.xlabel('Tiempo [ms]')
 plt.ylabel('Voltaje [V] ')
 plt.legend()
 plt.show()

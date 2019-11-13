@@ -40,12 +40,12 @@ for i in range(478):
 
 
 plt.figure()
-plt.plot(Tiempo(tiempo),f(Tiempo(tiempo),param[0],param[1]), '--', color ='blue', label ="Ajuste") 
-plt.errorbar(Tiempo(tiempo),V(Vc),yerr=err, fmt='.',color ='black',label ="Datos", ecolor = 'red')
+plt.plot(Tiempo(tiempo)*1000,f(Tiempo(tiempo),param[0],param[1]), '--', color ='blue', label ="Ajuste") 
+plt.errorbar(Tiempo(tiempo)*1000,V(Vc),yerr=err, fmt='.',color ='black',label ="Datos", ecolor = 'red')
 #plt.scatter(tiempo,Vfuente,color='orange',s= 0.5)
 #plt.ylim(0,5)
 plt.title('Transitor RL')
-plt.xlabel('Tiempo [s]')
+plt.xlabel('Tiempo [ms]')
 plt.ylabel('Voltaje[V] ')
 plt.legend()
 plt.show()
