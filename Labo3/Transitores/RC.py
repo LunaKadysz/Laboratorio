@@ -56,7 +56,7 @@ def chisqg(ydata,ymod,deg=2497,sd=None):
            chisq=np.sum((ydata-ymod)**2)  
       else:  
            chisq=np.sum( ((ydata-ymod)/sd)**2 )  
-        
+        return np.sum((y_data/sigma - y_model/sigma)**2)
       return chisq  
 chi = chisqg(V, f(t,param[0],param[1],param[2]))
 print("chisquered: " + str(chi))
