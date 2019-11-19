@@ -102,5 +102,5 @@ with rm.open_resource(instrumentos[0]) as osc:
 
 #guardamos los datos en un txt:
     
-np.savetxt('RC.txt',np.transpose([tiempo1,v1,v2]), fmt='%f')
+np.savetxt('ledVerde.txt',np.transpose([tiempo1,v1,v2]), fmt='%f')
 # Una vez que se sale del bloque with, la conexion con el osciloscopio se va a ver automaticamente cerrada

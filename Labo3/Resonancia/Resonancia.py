@@ -55,7 +55,8 @@ def f(frec,f0,E,A0,T0):
     A = (w/w0)-(w0/w)
     B = 2*E
     C = (B/A)**2
-    return (A0/np.sqrt(1+C))+T0
+    return((A0/np.sqrt(1+C))+T0)
+
 
 
 param_a, param_cov_a = curve_fit(f,frec_a,V_a/R[0], p0=[159,0.1,0.6,0.3]) 
@@ -74,10 +75,12 @@ print(param_b[1])
 
 param_c, param_cov_c = curve_fit(f,frec_c,V_c/R[2], p0=[159,0.1,0.6,0.3]) 
   
-print("Covariance of coefficients:") 
+print("PARAM,ETROS C:") 
 print(param_cov_c) 
-print(param_b[0])
-print(param_b[1])
+print(param_c[0])
+print(param_c[1])
+print(param_c[2])
+print(param_c[3])
 
 
 
