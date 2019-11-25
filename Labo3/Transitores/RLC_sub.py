@@ -63,6 +63,6 @@ plt.errorbar(Tiempo(tiempo)*1000,V(Vc),yerr=err, fmt='.',color ='black',label ="
 #plt.ylim(0,5)
 plt.title('Transitor Subamortiguado')
 plt.xlabel('Tiempo [ms]')
-plt.ylabel('Voltaje [V] ')
+plt.ylabel('Corriente [A] ')
 plt.legend()
 plt.show()

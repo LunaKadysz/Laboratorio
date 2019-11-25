@@ -37,3 +37,33 @@ plt.plot(t,f(t,param[0],param[1],param[2]))
 plt.scatter(t,V,s= 0.1,color = "red")
 plt.show()
 
+
+def chi_square(y_data, y_model, sigma):
+    return np.sum((y_data/sigma - y_model/sigma)**2)
+
+def r_chi_square(chi, y_data, dof):
+    nu = len(y_data) - 1 - dof
+    if nu < 1:
+        raise ValueError('length of y_data - 1 - dof should be greater than 1')
+    return chi / nu
+
+def p_value(chi, y_data, dof):
+    nu = len(y_data) - 1 - dof
+    if nu < 1:
+        raise ValueError('length of y_data - 1 - dof should be greater than 1')
+    
+    p = 1 - st.chi2.cdf(chi, nu)
+    return p
+
+fit = f(t,param[0],param[1],param[2])
+
+#sigma = np.sqrt(param_cov[0,0])
+sigma = 0.021294271318071607 
+
+chi = chi_square(V,fit,sigma)
+r = r_chi_square(chi, V, len(param))
+p =  p_value(chi, V, len(param))
+
+print(f'Chi square: {chi:.11f}')
+print(f'r: {r:.11f}')
+print(f'p: {p:.11f}')
